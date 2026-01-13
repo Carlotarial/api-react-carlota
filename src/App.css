@@ -1,42 +1,214 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+body {
+  background: linear-gradient(to bottom, #e9f7ff 0%, #cfefff 40%, #b6e3f5 100%);
+  color: #0f2a3d;
+  font-family: "Frutiger", "Arial", sans-serif;
+}
+
+.home {
   padding: 2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.home h1 {
+  font-size: 2.6rem;
+  margin-bottom: 2rem;
+  color: #0b4f6c;
+  text-shadow: 0 1px 0 #ffffff, 0 2px 6px rgba(255, 255, 255, 0.6);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.6rem;
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.character-link {
+  text-decoration: none;
 }
 
-.card {
-  padding: 2em;
+.character-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.75),
+    rgba(210, 240, 255, 0.65)
+  );
+
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 10px 25px rgba(0, 120, 170, 0.25);
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-.read-the-docs {
-  color: #888;
+.character-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.5),
+    transparent 55%
+  );
+  pointer-events: none;
+}
+
+.character-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1),
+    0 18px 40px rgba(0, 120, 170, 0.4);
+}
+
+.character-card img {
+  width: 100%;
+  display: block;
+}
+
+.character-info {
+  padding: 0.9rem 1rem 1.2rem;
+}
+
+.character-info h2 {
+  font-size: 1rem;
+  margin: 0;
+  color: #0b4f6c;
+  text-shadow: 0 1px 0 #ffffff;
+}
+
+.character-info p {
+  margin: 0.3rem 0 0;
+  font-size: 0.8rem;
+  color: #2f6f8f;
+}
+
+.pagination {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+}
+
+.pagination span {
+  font-weight: 600;
+  color: #0b4f6c;
+}
+
+.pagination button {
+  background: linear-gradient(to bottom, #e6f9ff, #9dd9f3);
+  border: 1px solid rgba(0, 120, 170, 0.4);
+  color: #0b4f6c;
+  padding: 0.6rem 1.6rem;
+  border-radius: 999px;
+  cursor: pointer;
+
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 4px 12px rgba(0, 120, 170, 0.3);
+
+  transition: all 0.25s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: linear-gradient(to bottom, #ffffff, #bfe9fb);
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination button.active {
+  background: #0b4f6c;
+  color: #fff;
+}
+
+.detail-page {
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(to bottom, #e9f7ff, #b6e3f5);
+}
+
+.back-link {
+  color: #0b4f6c;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.detail-card {
+  max-width: 420px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 22px;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.8),
+    rgba(200, 235, 255, 0.7)
+  );
+
+  backdrop-filter: blur(12px);
+
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1),
+    0 15px 35px rgba(0, 120, 170, 0.35);
+
+  text-align: center;
+}
+
+.detail-card img {
+  width: 100%;
+  border-radius: 18px;
+  margin-bottom: 1rem;
+}
+
+.detail-card h1 {
+  margin-bottom: 0.8rem;
+  color: #0b4f6c;
+  text-shadow: 0 1px 0 #ffffff;
+}
+
+.detail-card p {
+  margin: 0.4rem 0;
+  color: #2f6f8f;
+}
+
+.loading {
+  padding: 2rem;
+  text-align: center;
+  color: #0b4f6c;
+}
+
+.notfound-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(to bottom, #e9f7ff 0%, #cfefff 40%, #b6e3f5 100%);
+  color: #0b4f6c;
+  font-family: "Frutiger", "Arial", sans-serif;
+  padding: 2rem;
+}
+
+.notfound-page h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.7);
+}
+
+.notfound-page p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.notfound-page img {
+  width: 500px;
+  max-width: 90%;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
